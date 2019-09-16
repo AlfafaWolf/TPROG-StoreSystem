@@ -1,0 +1,20 @@
+1. Criar um esqueleto básico para o sistema
+1.1 Classe Principal
+1.2 Classe de leitura
+1.3 Classe Cliente
+-> Ler os dados de um arquivo CSV
+-> Criar um "parser" que segmente uma linha do arquivo para obter os atributos de uma cliente 
+-> Criar uma lista de clientes
+-> Ordenar a lista
+-> Imprimir a lista
+
+2. Adicionar a funcionalidade de ler os cliente de arquivo JSON
+2.1 Usando RegEx
+2.2 Usando um parser para JSON
+
+3. Criar um procedimento de pesquisa por cliente
+
+4. Adicionar a funcionalidade de ler os cliente de um WebService
+
+5. Adicionar a funcionalidade de ler os cliente de um banco de dados
+

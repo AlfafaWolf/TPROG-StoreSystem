@@ -1,0 +1,24 @@
+I think I finally understood why the examples we are planning would not generate the same kind of result that is expected. Let me explain because maybe it can help us to understand what kind of example we should do.
+
+I believe we have 3 different problems to solve, and each must be solved using a different approach:
+
+	#1. Merge datasets
+	#2. Additional/Extra/Relational information retrieving
+	#3. Results from ML: regression, classification, clustering, etc
+
+In the previous example, we used AutoML techniques to approach #3. We used supervised learning to predict the Rating of the movies and unsupervised learning to cluster the movies in different categories.
+
+Based on that on can provide to users, based on the features informed by him about a movie, the predicted Rating to help the user to decide if he wants to watch that movie, and the list of the other movies in the same cluster.
+
+The limitation of this experiment, at first sight, was the features used because we used the list of genres and the movie duration, but I think that the problem is a little bigger.. we can use datasets with more features like director, actors, and other information, but:
+
+* We need to transform that in a “single file” dataset with many columns (example: one column per actor) to be able to feed the ML model.
+	** Is that correct? (I mean, train a model using such sparse dataset)
+	** Maybe this kind of information (relationships between classes) can be more suitable to approach #2, to retrieve additional information instead predict features or cluster movies.
+
+* Even if we have a transformed dataset with all available information, from all different related classes, the kind of information we can get using the methods that we are testing will be the same, of course with better accuracy. Example: predict ratings and cluster movies together.
+
+Maybe, the results expected from the examples can be more related to #2 them to #3. I believe we can generate such kind of examples, but not using ML-Box and similar frameworks because they are focused on #3.
+
+Summarising: I believe that our previous example approached a problem different them what was expected, and we are not sure about which could be an example appropriated for now. Additionally, maybe the AutoML framework we are studying is not suitable to generate examples focused on retrieving extra information, because it is focused on Prediction.
+

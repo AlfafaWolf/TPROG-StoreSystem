@@ -1,0 +1,19 @@
+Main:
+-> gerenciar o workflow
+-> criar instancias de objetos e listas
+-> imprimir resultados
+
+Leitor:
+-> Ler os dados de um arquivo CSV, 
+-> JSON, 
+-> WS e 
+-> BD
+
+Cliente:
+-> construcao dos obj
+-> comparacao
+-> formatacao da impressao de um obj
+
+ListaFuncs:
+-> ordenar lista 
+-> pesquisar na lista
