@@ -22,8 +22,8 @@ public abstract class ListaFuncs
             clientes.add(new Cliente(linha));
         }
         
-        if(sorted)
-            Ordena.insertionSort(clientes);
+        //if(sorted)
+            //Ordena.insertionSort(clientes);
         
         return clientes;
     }

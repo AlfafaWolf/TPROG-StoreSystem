@@ -69,10 +69,35 @@ public class Cliente
         return atributos;
     }
     
-    // Compara a ordem alfabética entre dois Clientes
-    public int compareWith(Cliente C){
+    // Compara cliente de acordo com o parâmetro
+    public int compareWith(Cliente C, String param) {
         int delta;
-        delta = C.getNome().compareTo(this.nome);
+        String search = param.toLowerCase().trim();
+        
+        if (search.equals("id"))
+        {
+           // compara por int
+            if (C.getId() == this.id)
+                delta = 0;
+            else
+                delta = C.getId() - this.id;
+        }
+        else if (search.equals("nome"))
+        {
+            // compara por string
+            delta = C.getNome().compareTo(this.nome);
+        }
+        else if(search.equals("email"))
+        {
+            // compara por string
+            delta = C.getEmail().compareTo(this.email);
+        }
+        else
+        {
+            // erro
+            System.out.println("ERRO. Parametro do inválido na função compareWith de Cliente");
+            delta = 0;
+        }
         return delta;
     }
     

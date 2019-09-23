@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Ordena 
 {
-    public static void insertionSort(List<Cliente> clientes)
+    public static void insertionSort(List<Cliente> clientes, String param)
     {
         int i, j;
         Cliente chave;
@@ -23,8 +23,8 @@ public class Ordena
         {
             chave = clientes.get(i);
             j = i - 1;
-            //clientes.get(j).getNome().compareTo(chave.getNome())
-            while(j >= 0 && chave.compareWith(clientes.get(j)) > 0)
+            
+            while(j >= 0 && chave.compareWith(clientes.get(j), param) > 0)
             {
                 clientes.set(j + 1, clientes.get(j));
                 j = j - 1;
