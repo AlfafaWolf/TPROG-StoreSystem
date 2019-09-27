@@ -52,5 +52,10 @@ public class Principal
             clientes.add(new Cliente(list.get(i)));
             System.out.println(clientes.get(i).toString());
         }
+        System.out.println("---------------------------------------------");
+        System.out.println("Ordenado:");
+        Ordena.insertionSort(clientes, "email");
+        
+        ListaFuncs.printList(clientes);
     }
 }
