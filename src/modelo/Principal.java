@@ -42,7 +42,7 @@ public class Principal
         }
         
         // Ler dados da fonte
-        List<Map> list = leitor.readSample(5);
+        List<Map> list = leitor.readAll();
         ListaFuncs.printList(list);
         
         // Gerar Lista de Clientes
@@ -57,5 +57,11 @@ public class Principal
         Ordena.insertionSort(clientes, "email");
         
         ListaFuncs.printList(clientes);
+        System.out.println("---------------------------------------------");
+        System.out.println("Busca Parcial:");
+        Busca.BuscaParcialCliente(clientes, "nome", "John");
+        System.out.println("---------------------------------------------");
+        System.out.println("Busca:");
+        Busca.BuscaCliente(clientes, "email", "Urban.Schinner@hotmail.com");
     }
 }

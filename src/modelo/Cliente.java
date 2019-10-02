@@ -101,6 +101,65 @@ public class Cliente
         return delta;
     }
     
+        //Compara atributo do cliente com alguma String de acordo com o parâmetro
+        public int compareWithText(String param, String busca) {
+        int delta = -1, identificador;
+        boolean matches;
+        boolean found;
+        Matcher matcher;
+        Pattern pattern = Pattern.compile(busca);
+        param = param.toLowerCase().trim();
+        
+        if (param.equals("id"))
+        {
+           // converte string para int
+            identificador = Integer.parseInt(busca);
+            
+           //compara por int
+            if (identificador == this.id)
+                delta = 0;
+            else
+                delta = identificador - this.id;
+        }
+        else if (param.equals("nome"))
+        {
+            // compara por string
+            matcher = pattern.matcher(this.nome);
+            matches = matcher.matches();
+            found = matcher.find();
+            if(matches)
+            {
+                delta = 0;
+            }
+            else if(found)
+            {
+                delta = 1;
+            }
+        }
+        else if(param.equals("email"))
+        {
+            // compara por string
+            matcher = pattern.matcher(this.email);
+            matches = matcher.matches();
+            found = matcher.find();
+            if(matches)
+            {
+                delta = 0;
+            }
+            else if(found)
+            {
+                delta = 1;
+            }
+        }
+        else
+        {
+            // erro
+            System.out.println("ERRO. Parametro do inválido na função compareWith de Cliente");
+            delta = 0;
+        }
+        return delta;
+    }
+    
     // Verifica se o email é valido
     private boolean isEmailValid(String email)
     {
