@@ -55,13 +55,16 @@ public class Principal
         System.out.println("---------------------------------------------");
         System.out.println("Ordenado:");
         Ordena.insertionSort(clientes, "email");
-        
         ListaFuncs.printList(clientes);
+        
         System.out.println("---------------------------------------------");
         System.out.println("Busca Parcial:");
-        Busca.BuscaParcialCliente(clientes, "nome", "John");
+        List<Cliente> cs = Busca.BuscaParcialCliente(clientes, "nome", "John");
+        ListaFuncs.printList(cs);
+        
         System.out.println("---------------------------------------------");
         System.out.println("Busca:");
-        Busca.BuscaCliente(clientes, "email", "Urban.Schinner@hotmail.com");
+        Cliente c = Busca.BuscaCliente(clientes, "email", "Urban.Schinner@hotmail.com");
+        System.out.println(c);
     }
 }

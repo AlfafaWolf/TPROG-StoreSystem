@@ -102,10 +102,10 @@ public class Cliente
     }
     
         //Compara atributo do cliente com alguma String de acordo com o parâmetro
-        public int compareWithText(String param, String busca) {
+    public int compareWithText(String param, String busca) 
+    {
         int delta = -1, identificador;
-        boolean matches;
-        boolean found;
+        boolean matches, found;
         Matcher matcher;
         Pattern pattern = Pattern.compile(busca);
         param = param.toLowerCase().trim();
