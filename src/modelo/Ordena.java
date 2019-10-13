@@ -14,22 +14,34 @@ import java.util.List;
  */
 public class Ordena 
 {
-    public static void insertionSort(List<Cliente> clientes, String param)
+    public static void insertionSort(List<Cliente> clientes, String param, boolean inverted)
     {
-        int i, j;
+        int i, j, delta;
         Cliente chave;
+        boolean cmp;
         
         for (i = 1; i < clientes.size(); i++) 
         {
             chave = clientes.get(i);
             j = i - 1;
             
-            while(j >= 0 && chave.compareWith(clientes.get(j), param) > 0)
+            delta = chave.compareWith(clientes.get(j), param);
+            if (inverted)
+                cmp = delta < 0;
+            else
+                cmp = delta > 0;
+            
+            while(j >= 0 && cmp)
             {
                 clientes.set(j + 1, clientes.get(j));
                 j = j - 1;
             }
             clientes.set(j + 1, chave);
         }
+    }
+    
+    public static void insertionSort(List<Cliente> clientes, String param)
+    {
+        insertionSort(clientes, param, false);
     }
 }

@@ -24,7 +24,7 @@ public class LeitorCSV implements ILeitor
         {
             File arq = new File(filename);
             this.scanner  = new Scanner(arq);
-            System.out.println("Arquivo Aberto com Sucesso");
+            //System.out.println("Arquivo Aberto com Sucesso");
         }
         catch(FileNotFoundException ex)
         {
