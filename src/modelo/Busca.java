@@ -22,10 +22,14 @@ public class Busca
                 matches.add(clientes.get(i));
             }
         }
+        
+        if (matches.isEmpty())
+            return null;
+        
         return matches;
     }
     
-    public static Cliente BuscaCliente(List<Cliente> clientes, String param, String busca)
+    public static Cliente BuscarCliente(List<Cliente> clientes, String param, String busca)
     {
         for(int i = 0; i < clientes.size(); i++)
         {

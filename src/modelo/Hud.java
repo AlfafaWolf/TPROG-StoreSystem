@@ -31,7 +31,7 @@ public abstract class Hud
         }
         catch (Exception e)
         {
-            System.out.println("ERRO: Não foi possivel identificar OS.");
+            mensagemErro("Nao foi possivel identificar OS.");
         }
     }
     

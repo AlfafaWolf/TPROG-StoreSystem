@@ -18,13 +18,14 @@ public class Principal
         Path path;
         ILeitor leitor = null;
         Scanner input = new Scanner(System.in);
-        List<Cliente> clientes;
-        
-        Hud.menuInicial();
-        int op = input.nextInt();
-        switch(op)
+        List<Cliente> clientes = null;
+        String paramTypes = "id,nome,email";
+        do
         {
-            case 1:
+            Hud.menuInicial();
+            int op = input.nextInt();
+            if (op == 1)
+            {
                 Hud.mensagemInput("Digite o nome do arquivo:");
                 Hud.clearInput(input);
                 String file = input.nextLine();
@@ -53,7 +54,7 @@ public class Principal
                             Hud.mensagemErro("Tipo do arquivo não valido.");
                             break;
                     }
-                    
+
                     if(leitor != null)
                     {
                         List<Map> registros = leitor.readAll();
@@ -65,78 +66,133 @@ public class Principal
                 {
                     Hud.mensagemErro("Arquivo nao encontrado.");
                 }
-                break;
-            case 2:
+            }
+            else if (op == 2)
+            {
                 if (leitor == null)
                 {
                     Hud.mensagemErro("Carrege o arquivo antes.");
-                    break;
+                    continue;
                 }
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 0:
+                
+                boolean loop;
+                boolean isInverted = false;
+                do
+                {
+                    loop = false;
+                    Hud.mensagemInput("Ordem decrescente ou crescente? [d/c]");
+                    Hud.clearInput(input);
+                    String ordem = input.nextLine().trim().toLowerCase();
+                    
+                    if(ordem.equals("d"))
+                        isInverted = true;
+                    else if(ordem.equals("c"))
+                        isInverted = false;
+                    else
+                    {
+                        Hud.mensagemErro("Ordem invalida.");
+                        loop = true;
+                    }
+                }while(loop);
+                String param = "";
+                
+                do
+                {
+                    loop = false;
+                    Hud.mensagemInput("Ordernar por? [id, nome, email]");
+                    //Hud.clearInput(input);
+                    param = input.nextLine().trim().toLowerCase();
+                    System.out.println(param);
+                    if (!paramTypes.contains(param))
+                    {
+                        loop = true;
+                        Hud.mensagemErro("Parametro Invalido.");
+                    }
+                }while(loop);
+
+                Ordena.insertionSort(clientes, param, isInverted);
+                ListaFuncs.printList(clientes);
+            }
+            else if (op == 3)
+            {
+                if (leitor == null)
+                {
+                    Hud.mensagemErro("Carrege o arquivo antes.");
+                    continue;
+                }
+                boolean loop;
+                String param = "";
+                
+                do
+                {
+                    loop = false;
+                    Hud.mensagemInput("Buscar por? [id, nome, email]");
+                    Hud.clearInput(input);
+                    param = input.nextLine().trim().toLowerCase();
+                    if (!paramTypes.contains(param))
+                    {
+                        loop = true;
+                        Hud.mensagemErro("Parametro Invalido.");
+                    }
+                }while(loop);
+                Hud.mensagemInput("O que deseja buscar?");
+                String busca = input.nextLine().trim();
+                Cliente c = Busca.BuscarCliente(clientes, param, busca);
+                
+                if (c == null)
+                {
+                    Hud.mensagemErro("Nao foi possivel encontrar o cliente.");
+                }
+                else
+                {
+                    Hud.mensagemSucesso("Cliente encontrado com sucesso!");
+                    System.out.println(c);
+                }
+            }
+            else if (op == 4)
+            {
+                if (leitor == null)
+                {
+                    Hud.mensagemErro("Carrege o arquivo antes.");
+                    continue;
+                }
+                boolean loop;
+                String param = "";
+                
+                do
+                {
+                    loop = false;
+                    Hud.mensagemInput("Buscar por? [id, nome, email]");
+                    Hud.clearInput(input);
+                    param = input.nextLine().trim().toLowerCase();
+                    if (!paramTypes.contains(param))
+                    {
+                        loop = true;
+                        Hud.mensagemErro("Parametro Invalido.");
+                    }
+                }while(loop);
+                Hud.mensagemInput("O que deseja buscar?");
+                String busca = input.nextLine().trim();
+                List<Cliente> cs = Busca.BuscaParcialCliente(clientes, param, busca);
+                if (cs == null)
+                {
+                    Hud.mensagemErro("Nao foi possivel encontrar nenhum cliente.");
+                }
+                else
+                {
+                    Hud.mensagemSucesso("Clientes encontrados com sucesso!");
+                    ListaFuncs.printList(cs);
+                }
+            }
+            else if (op == 0)
+            {
                 Hud.mensagemSucesso("Saindo do programa ...");
                 break;
-            default:
+            }
+            else
+            {
                 Hud.mensagemErro("Opcao invalida. Tente novamente");
-                break;
-        }   
+            }
+        }while(true);
     }
 }
-/*
-        String file = "JSONClientes.json";
-        Path path = Paths.get("src/dataset/" + file).toAbsolutePath();
-        
-        ILeitor leitor;
-        
-        // Quebra a String, usando como parâmetro "."
-        // Se usa "\\" para transformar em "\.", para o split poder lêr
-        String[] splitFile = file.split("\\.");
-        
-        // Obter tipo do arquivo
-        String type = splitFile[splitFile.length - 1];
-
-        // Descobrir o tipo do arquivo para a instância do Leitor
-        switch (type) 
-        {
-            case "csv":
-                leitor = new LeitorCSV(path.toString());
-                break;
-            case "json":
-                leitor = new LeitorJSON(path.toString());
-                break;
-            default:
-                leitor = null;
-                System.out.println("ERROR: Tipo do arquivo não identificado.");
-                return;
-        }
-        
-        // Ler dados da fonte
-        List<Map> list = leitor.readAll();
-        ListaFuncs.printList(list);
-        
-        // Gerar Lista de Clientes
-        List<Cliente> clientes = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) 
-        {
-            clientes.add(new Cliente(list.get(i)));
-            System.out.println(clientes.get(i).toString());
-        }
-        System.out.println("---------------------------------------------");
-        System.out.println("Ordenado:");
-        Ordena.insertionSort(clientes, "email");
-        ListaFuncs.printList(clientes);
-        
-        System.out.println("---------------------------------------------");
-        System.out.println("Busca Parcial:");
-        List<Cliente> cs = Busca.BuscaParcialCliente(clientes, "nome", "John");
-        ListaFuncs.printList(cs);
-        
-        System.out.println("---------------------------------------------");
-        System.out.println("Busca:");
-        Cliente c = Busca.BuscaCliente(clientes, "email", "Urban.Schinner@hotmail.com");
-        System.out.println(c);
-*/
