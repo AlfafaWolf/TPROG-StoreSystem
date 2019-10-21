@@ -163,7 +163,7 @@ public class Cliente
     // Verifica se o email é valido
     private boolean isEmailValid(String email)
     {
-        Pattern p = Pattern.compile("^(.+)@(.+)$");
+        Pattern p = Pattern.compile("[A-Za-z][\\w\\d-\\.]+@([a-z]+\\.){1,}[a-z]+");
         Matcher m = p.matcher(email);
         return m.matches();
     }

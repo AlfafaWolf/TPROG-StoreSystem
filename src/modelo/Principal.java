@@ -102,7 +102,7 @@ public class Principal
                     Hud.mensagemInput("Ordernar por? [id, nome, email]");
                     //Hud.clearInput(input);
                     param = input.nextLine().trim().toLowerCase();
-                    System.out.println(param);
+                    //System.out.println(param);
                     if (!paramTypes.contains(param))
                     {
                         loop = true;
