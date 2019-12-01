@@ -11,10 +11,12 @@ import java.util.Scanner;
 public class LeitorCSV implements ILeitor 
 {
     private Scanner scanner;
+    private String path;
 
     public LeitorCSV(){ }
     public LeitorCSV(String filename)
     {
+        path =  filename;
         openSource(filename);
     }
     
@@ -74,5 +76,12 @@ public class LeitorCSV implements ILeitor
             list.add(linha);
         }
         return list;
+    }
+    
+    @Override
+    public void reset()
+    {
+        scanner.close();
+        openSource(path);
     }
 }

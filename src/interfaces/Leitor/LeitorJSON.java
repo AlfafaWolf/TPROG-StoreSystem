@@ -72,11 +72,18 @@ public class LeitorJSON implements ILeitor
     @Override
     public List<Map> readAll() 
     {
+        reset();
         List<Map> list = new ArrayList<>();
         while(index < jsonContent.length())
         {
             list.add(readNext());
         }
         return list;
+    }
+    
+    @Override
+    public void reset()
+    {
+        index = 0;
     }
 }

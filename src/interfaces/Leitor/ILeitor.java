@@ -9,4 +9,5 @@ public interface ILeitor
     public Map readNext();
     public List<Map> readSample(int N);
     public List<Map> readAll();
+    void reset();
 }

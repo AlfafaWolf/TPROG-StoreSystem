@@ -1,8 +1,10 @@
-package modelo;
+package utilitarios;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import modelo.Cliente;
+import modelo.Ordena;
 
 public abstract class ListaFuncs 
 {
