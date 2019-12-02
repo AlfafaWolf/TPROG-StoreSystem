@@ -59,6 +59,12 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
+        txSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txSenhaActionPerformed(evt);
+            }
+        });
+
         txErro.setForeground(new java.awt.Color(255, 0, 0));
         txErro.setText("Senha ou login inválidos");
 
@@ -79,9 +85,8 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txErro, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                                .addComponent(txSenha)))))
+                            .addComponent(txLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(txSenha))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,6 +120,10 @@ public class TelaLogin extends javax.swing.JFrame {
         
         System.out.println("Login: " + txLogin.getText() + "\nSenha: " + String.valueOf(txSenha.getPassword()));
     }//GEN-LAST:event_btLoginActionPerformed
+
+    private void txSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txSenhaActionPerformed
 
     /**
      * @param args the command line arguments

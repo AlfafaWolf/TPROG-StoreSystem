@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import view.TelaCadastrarVenda;
 
 public class Principal 
 {
@@ -21,6 +22,11 @@ public class Principal
     public static void setSessao(Sessao _sessao)
     {
         sessao = _sessao;
+    }
+    
+    public static Sessao getSessao()
+    {
+        return sessao;
     }
     
     private static void init()
@@ -45,7 +51,10 @@ public class Principal
         
         tela.dispose();
         
-        TelaBuscaCliente telaBusca = new TelaBuscaCliente();
-        telaBusca.setVisible(true);
+        //TelaBuscaCliente telaBusca = new TelaBuscaCliente();
+        //telaBusca.setVisible(true);
+        
+        TelaCadastrarVenda telaCadastro = new TelaCadastrarVenda();
+        telaCadastro.setVisible(true);
     }
 }

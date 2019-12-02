@@ -1,6 +1,7 @@
 package modelo;
 
 public class Produto {
+    private String codigo;
     private String marca;
     private String modelo;
     private float valor;
@@ -10,7 +11,8 @@ public class Produto {
     }
      
      
-    public Produto(String marca, String modelo, float valor) {
+    public Produto(String codigo, String marca, String modelo, float valor) {
+        this.codigo = codigo;
         this.marca = marca;
         this.modelo = modelo;
         this.valor = valor;
@@ -38,5 +40,22 @@ public class Produto {
  
     public float getValor() {
         return valor;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (getClass() != obj.getClass())
+            return false;
+        
+        Produto p = (Produto) obj;
+        return codigo.equals(p.getCodigo());
     }
 }

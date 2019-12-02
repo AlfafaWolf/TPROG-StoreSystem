@@ -9,14 +9,25 @@ public class Cliente
     private int id;
     private String nome;
     private String email;
+    private String cpf;
     
     public Cliente(){ }
 
-    public Cliente(int id, String nome, String email) 
+    public Cliente(int id, String nome, String email, String cpf) 
     {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.cpf = cpf;
+        
+        validateEmail(this.email);
+    }
+    
+    public Cliente(String nome, String email, String cpf) 
+    {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
         
         validateEmail(this.email);
     }
@@ -62,6 +73,14 @@ public class Cliente
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     
     private String[] parseLinha(String linha){

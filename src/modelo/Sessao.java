@@ -59,4 +59,9 @@ public class Sessao
     public ILeitor getLeitor() {
         return leitor;
     }
+    
+    public Vendedor getVendedor()
+    {
+        return vendedor;
+    }
 }
