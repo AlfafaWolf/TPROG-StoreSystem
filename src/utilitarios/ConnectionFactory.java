@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class ConnectionFactory 
 {
-    static final String DB_URL = "jdbc:mysql://localhost:3307/db-tap";
+    static final String DB_URL = "jdbc:mysql://localhost:3307/db-ss-tap";
     static final String DB_DRV = "com.mysql.jdbc.Driver";
     static final String DB_USER = "root";
     static final String DB_PASSWD = "usbw";

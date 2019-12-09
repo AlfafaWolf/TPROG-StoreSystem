@@ -43,6 +43,7 @@ public class ControlTelaLogin {
             if(resultSet.next())
             {   
                 Vendedor vendedor = new Vendedor(
+                        resultSet.getInt("id"),
                         resultSet.getString("matricula"),
                         resultSet.getString("nome")
                 );

@@ -6,14 +6,14 @@ import org.json.*;
 
 public class Cliente 
 {
-    private int id;
+    private Integer id;
     private String nome;
     private String email;
     private String cpf;
     
     public Cliente(){ }
 
-    public Cliente(int id, String nome, String email, String cpf) 
+    public Cliente(Integer id, String nome, String email, String cpf) 
     {
         this.id = id;
         this.nome = nome;
@@ -51,7 +51,7 @@ public class Cliente
         validateEmail(this.email);
     }
     
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -63,7 +63,7 @@ public class Cliente
         return email;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

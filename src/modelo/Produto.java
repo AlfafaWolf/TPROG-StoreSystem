@@ -1,7 +1,7 @@
 package modelo;
 
 public class Produto {
-    private String codigo;
+    private Integer codigo;
     private String marca;
     private String modelo;
     private float valor;
@@ -10,8 +10,7 @@ public class Produto {
          
     }
      
-     
-    public Produto(String codigo, String marca, String modelo, float valor) {
+    public Produto(Integer codigo, String marca, String modelo, float valor) {
         this.codigo = codigo;
         this.marca = marca;
         this.modelo = modelo;
@@ -42,11 +41,11 @@ public class Produto {
         return valor;
     }
 
-    public String getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
@@ -56,6 +55,19 @@ public class Produto {
             return false;
         
         Produto p = (Produto) obj;
-        return codigo.equals(p.getCodigo());
+        System.out.println(marca.equals(p.getMarca()) && modelo.equals(p.getModelo()));
+        return marca.equals(p.getMarca()) && modelo.equals(p.getModelo());
     }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        
+        result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+        result = prime * result + ((marca == null) ? 0 : marca.hashCode());
+        result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
+        
+        return result;
+  }
 }

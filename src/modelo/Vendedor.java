@@ -11,6 +11,7 @@ package modelo;
  */
 public class Vendedor 
 {
+    private Integer id;
     private String matricula;
     private String nome;
  
@@ -18,9 +19,19 @@ public class Vendedor
          
     }
      
-    public Vendedor(String matricula, String nome) {
+    public Vendedor(Integer id, String matricula, String nome) {
+        
+        this.id = id;
         this.matricula = matricula;
         this.nome = nome;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
  
     public String getMatricula() {

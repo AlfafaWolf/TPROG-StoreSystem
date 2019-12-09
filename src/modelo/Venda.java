@@ -9,19 +9,19 @@ import java.util.Date;
 
 public class Venda 
 {
+    private Integer id;
     private Date data;
     private Cliente cliente;
     private Vendedor vendedor;
-    private Produto produto;
  
     public Venda() {
  
     }
      
-    public Venda(String data, Cliente cliente, Vendedor vendedor, Produto produto) {
+    public Venda(Integer id, String data, Cliente cliente, Vendedor vendedor) {
         try
         {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             this.data = format.parse(data);
         }
         catch(ParseException e)
@@ -30,11 +30,30 @@ public class Venda
             this.data = new Date(); 
         }
         
+        this.id = id;
         this.cliente = cliente;
         this.vendedor = vendedor;
-        this.produto = produto;
     }
- 
+    
+    public Venda(Integer id, Cliente cliente, Vendedor vendedor) {
+        this.id = id;
+        this.cliente = cliente;
+        this.vendedor = vendedor;
+    }
+    
+    public Venda(Cliente cliente, Vendedor vendedor) {
+        this.cliente = cliente;
+        this.vendedor = vendedor;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public Date getData() {
         return data;
     }
@@ -46,11 +65,7 @@ public class Venda
     public Vendedor getVendedor() {
         return vendedor;
     }
- 
-    public Produto getProduto() {
-        return produto;
-    }
- 
+    
     public void setData(Date data) {
         this.data = data;
     }
@@ -61,9 +76,5 @@ public class Venda
  
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
-    }
- 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
     }
 }
